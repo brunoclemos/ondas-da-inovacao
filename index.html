@@ -508,6 +508,76 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-t
   .values-grid{grid-template-columns:1fr}
   #qrcode{width:260px;height:260px}
 }
+
+/* ============ MOBILE (<=768px): centralizado e ajustado ============ */
+@media (max-width:768px){
+  section{padding:60px 22px}
+
+  /* ---- HERO ---- */
+  .hero-waves{display:none}      /* SVG com slice estica a largura do body no mobile */
+  .hero{padding:104px 22px 78px;text-align:center}
+  .hero-inner{margin:0 auto!important;width:100%;max-width:540px;display:flex;flex-direction:column;align-items:center}
+  .hero-badge{font-size:10.5px;letter-spacing:.04em;padding:8px 15px;max-width:100%;text-align:center;line-height:1.3}
+  .hero h1{font-size:clamp(40px,11vw,56px)}
+  .hero-underline{margin:22px auto 0}
+  .hero p.lead{max-width:340px;margin:24px auto 32px;overflow-wrap:break-word}
+  .hero-cta{flex-direction:column;width:100%;gap:12px;margin-bottom:46px}
+  .hero-cta .btn-primary,.hero-cta .btn-secondary{width:100%;justify-content:center}
+  .hero-stats{flex-direction:column;align-items:stretch;width:100%;gap:0;border-top:none;padding-top:0}
+  .hero-stats .stat{padding:15px 0;width:100%;border-top:1px solid rgba(255,255,255,.14);text-align:center}
+  .hero-stats .stat:first-child{border-top:none}
+  .hero-stats .stat::before{display:none}
+
+  /* ---- Cabeçalhos de seção centralizados ---- */
+  .eyebrow{justify-content:center}
+  .section-title{text-align:center;font-size:clamp(27px,6.4vw,40px);overflow-wrap:break-word}
+  .section-lead{text-align:center;margin-left:auto;margin-right:auto;overflow-wrap:break-word}
+  .arrow-sep{width:.5em;height:.5em}
+
+  /* ---- Projeto ---- */
+  .about .mini-label{text-align:center}
+  .comp{justify-content:center}
+  .about-visual{text-align:center}
+  .about-visual .measure-row{text-align:left}
+
+  /* ---- Medellín ---- */
+  .medellin-quote{border-left:none;padding-left:0;text-align:center}
+  .values-grid{max-width:340px;margin:24px auto 0}
+  .value-tag{justify-content:center}
+  .constancia-box{text-align:center}
+  .trip-header{text-align:center;justify-content:center}
+  .trip-header .eyebrow{justify-content:center}
+  .trip-photo .caption{text-align:left}
+
+  /* ---- Formato / Aula inaugural ---- */
+  .inaugural-card{text-align:center}
+  .inaugural-card .mini-label{text-align:center}
+  .inaugural-card .list-clean{display:inline-block;text-align:left}
+
+  /* ---- Incluído ---- */
+  .inc-card{text-align:center}
+  .inc-card ul{display:inline-block;text-align:left}
+
+  /* ---- Metodologia ---- */
+  .closing-card{text-align:center}
+  .closing-tags{justify-content:center}
+
+  /* ---- Regras ---- */
+  .rule-card{text-align:center}
+  .rule-card ul{display:inline-block;text-align:left}
+  .cult-banner{text-align:center}
+  .cult-banner .mini-label{text-align:center}
+  .axiom{justify-content:center}
+
+  /* ---- Investimento ---- */
+  .invest-grid > div:first-child{text-align:center}
+  .price-card .mini-label{text-align:center}
+  .included-mini{display:inline-grid;text-align:left}
+
+  /* ---- Footer ---- */
+  .foot-inner{text-align:center}
+  .foot-logo-stack{display:inline-flex;flex-direction:column;align-items:center}
+}
 </style>
 </head>
 <body>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Inscrição | Ondas da Inovação SEBRAE</title>
+<meta name="robots" content="noindex"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#7B3FE4; --purple-deep:#5B2BBF; --cyan:#2BB3F0; --sebrae:#005EB8;
+  --ink:#0A1628; --ink-2:#1B2A41; --muted:#5A6B85;
+  --paper:#F7FAFC; --line:#E3E8F0; --white:#fff;
+  --alert:#DC2626; --success:#15B886;
+  --brand-grad:linear-gradient(135deg,var(--purple),var(--cyan));
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(123,63,228,.18), transparent 55%),
+    linear-gradient(180deg,#0A1024 0%,#141a3d 100%);
+  min-height:100vh;line-height:1.55;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:24px 16px 48px;
+}
+.card{
+  width:100%;max-width:440px;background:var(--white);
+  border-radius:22px;overflow:hidden;
+  box-shadow:0 30px 70px rgba(0,0,0,.4);
+}
+.head{
+  background:var(--brand-grad);color:#fff;padding:30px 26px 26px;text-align:center;position:relative;
+}
+.head img{height:40px;width:auto;filter:brightness(0) invert(1);margin-bottom:14px}
+.head h1{font-family:'Inter Tight',sans-serif;font-size:23px;font-weight:800;line-height:1.15;letter-spacing:-.02em}
+.head p{font-size:13.5px;color:rgba(255,255,255,.9);margin-top:7px}
+.body{padding:26px 24px 28px}
+.intro{font-size:14px;color:var(--muted);text-align:center;margin-bottom:22px}
+.field{margin-bottom:16px}
+label{display:block;font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:7px}
+label .req{color:var(--purple)}
+input{
+  width:100%;padding:14px 15px;font-size:16px;font-family:inherit;
+  border:1.5px solid var(--line);border-radius:12px;background:var(--paper);
+  color:var(--ink);transition:border-color .2s,box-shadow .2s;
+}
+input::placeholder{color:#9aa6ba}
+input:focus{outline:none;border-color:var(--purple);background:#fff;box-shadow:0 0 0 4px rgba(123,63,228,.12)}
+input.invalid{border-color:var(--alert);background:#fff5f5}
+.err{font-size:12px;color:var(--alert);margin-top:5px;display:none;font-weight:600}
+input.invalid + .err{display:block}
+.submit{
+  width:100%;margin-top:8px;padding:16px;font-size:16px;font-weight:800;font-family:'Inter Tight',sans-serif;
+  color:#fff;background:var(--brand-grad);border:none;border-radius:12px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 10px 26px rgba(123,63,228,.34);transition:transform .15s,box-shadow .15s,opacity .2s;
+}
+.submit:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(123,63,228,.44)}
+.submit:disabled{opacity:.7;cursor:not-allowed;transform:none}
+.spinner{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.privacy{font-size:11.5px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.5}
+/* success state */
+.success{display:none;text-align:center;padding:18px 6px 6px}
+.success .check{width:74px;height:74px;border-radius:50%;background:rgba(21,184,134,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.success .check svg{width:38px;height:38px;stroke:var(--success);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.success h2{font-family:'Inter Tight',sans-serif;font-size:24px;font-weight:800;margin-bottom:8px}
+.success p{font-size:16px;color:var(--muted);max-width:320px;margin:0 auto}
+.topbar{display:none;background:#fde8e8;color:#9b1c1c;font-size:12.5px;font-weight:600;text-align:center;padding:9px 12px}
+@media (max-width:360px){
+  body{padding:16px 12px 40px}
+  .card{border-radius:18px}
+  .head{padding:24px 20px 22px}
+  .body{padding:20px 18px 22px}
+  input{padding:12px 13px}
+  .submit{padding:14px}
+}
+@media (prefers-reduced-motion:reduce){.spinner{animation:none}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="topbar" id="topbar"></div>
+  <div class="head">
+    <img src="img/logo-ondas.svg" alt="Ondas da Inovação"/>
+    <h1>Garanta sua vaga</h1>
+    <p>Escola de Empreendedorismo e Inovação · SEBRAE</p>
+  </div>
+  <div class="body">
+    <form id="form" novalidate>
+      <p class="intro">Preencha seus dados e a nossa equipe entra em contato com você sobre a próxima turma.</p>
+
+      <div class="field">
+        <label for="nome">Nome completo <span class="req">*</span></label>
+        <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome e sobrenome" required/>
+        <div class="err">Digite seu nome completo (nome e sobrenome).</div>
+      </div>
+
+      <div class="field">
+        <label for="documento">CPF ou CNPJ <span class="req">*</span></label>
+        <input id="documento" name="documento" type="text" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" required/>
+        <div class="err">Informe um CPF ou CNPJ válido.</div>
+      </div>
+
+      <div class="field">
+        <label for="telefone">Telefone de contato <span class="req">*</span></label>
+        <input id="telefone" name="telefone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(00) 00000-0000" required/>
+        <div class="err">Informe um telefone válido com DDD.</div>
+      </div>
+
+      <button type="submit" class="submit" id="submitBtn">
+        <span class="spinner" id="spinner"></span>
+        <span id="btnLabel">Quero garantir minha vaga</span>
+      </button>
+      <p class="privacy">Seus dados serão usados apenas para contato sobre o programa Ondas da Inovação.</p>
+    </form>
+
+    <div class="success" id="success">
+      <div class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h2>Inscrição recebida!</h2>
+      <p>Obrigado pelo interesse. A nossa equipe vai entrar em contato com você nos próximos dias. Pode fechar esta página.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   CONFIG: cole aqui a URL do webhook de PRODUCAO do n8n.
+   (Plano B Apps Script: cole a URL terminada em /exec do Web App.)
+   ========================================================= */
+const CONFIG = {
+  WEBHOOK_URL: "https://EDITE-AQUI-COM-SEU-WEBHOOK-N8N",
+  ORIGEM: "QR Pitch"
+};
+
+/* ======== VALIDADORES CPF / CNPJ + MASCARAS ======== */
+function soDigitos(v){ return String(v||'').replace(/\D/g,''); }
+function validaCPF(cpf){
+  cpf = soDigitos(cpf);
+  if (cpf.length !== 11) return false;
+  if (/^(\d)\1{10}$/.test(cpf)) return false;
+  let soma = 0;
+  for (let i = 0; i < 9; i++) soma += parseInt(cpf[i]) * (10 - i);
+  let d1 = (soma * 10) % 11; if (d1 === 10) d1 = 0;
+  if (d1 !== parseInt(cpf[9])) return false;
+  soma = 0;
+  for (let i = 0; i < 10; i++) soma += parseInt(cpf[i]) * (11 - i);
+  let d2 = (soma * 10) % 11; if (d2 === 10) d2 = 0;
+  return d2 === parseInt(cpf[10]);
+}
+function validaCNPJ(cnpj){
+  cnpj = soDigitos(cnpj);
+  if (cnpj.length !== 14) return false;
+  if (/^(\d)\1{13}$/.test(cnpj)) return false;
+  const calc = (base) => {
+    let pos = base.length - 7, soma = 0;
+    for (let i = base.length; i >= 1; i--){
+      soma += parseInt(base[base.length - i]) * pos--;
+      if (pos < 2) pos = 9;
+    }
+    const r = soma % 11;
+    return r < 2 ? 0 : 11 - r;
+  };
+  const d1 = calc(cnpj.substring(0,12));
+  if (d1 !== parseInt(cnpj[12])) return false;
+  const d2 = calc(cnpj.substring(0,13));
+  return d2 === parseInt(cnpj[13]);
+}
+function validaDocumento(v){
+  const d = soDigitos(v);
+  if (d.length === 11) return validaCPF(d);
+  if (d.length === 14) return validaCNPJ(d);
+  return false;
+}
+function mascaraDoc(v){
+  let d = soDigitos(v).slice(0,14);
+  if (d.length <= 11){
+    return d.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+  }
+  return d.replace(/(\d{2})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1/$2').replace(/(\d{4})(\d{1,2})$/,'$1-$2');
+}
+function mascaraTel(v){
+  let d = soDigitos(v).slice(0,11);
+  if (d.length <= 10){
+    return d.replace(/(\d{2})(\d)/,'($1) $2').replace(/(\d{4})(\d{1,4})$/,'$1-$2');
+  }
+  return d.replace(/(\d{2})(\d)/,'($1) $2').replace(/(\d{5})(\d{1,4})$/,'$1-$2');
+}
+function validaTelefone(v){ const d = soDigitos(v); return d.length === 10 || d.length === 11; }
+function validaNome(v){
+  const partes = String(v||'').trim().split(/\s+/).filter(p => p.length >= 2);
+  return partes.length >= 2;
+}
+
+/* ======== UI ======== */
+const form = document.getElementById('form');
+const nome = document.getElementById('nome');
+const doc = document.getElementById('documento');
+const tel = document.getElementById('telefone');
+const btn = document.getElementById('submitBtn');
+const btnLabel = document.getElementById('btnLabel');
+const spinner = document.getElementById('spinner');
+const topbar = document.getElementById('topbar');
+
+doc.addEventListener('input', e => { e.target.value = mascaraDoc(e.target.value); clearErr(e.target); });
+tel.addEventListener('input', e => { e.target.value = mascaraTel(e.target.value); clearErr(e.target); });
+nome.addEventListener('input', e => clearErr(e.target));
+function clearErr(el){ el.classList.remove('invalid'); }
+function setErr(el, msg){ el.classList.add('invalid'); if(msg){ el.nextElementSibling.textContent = msg; } el.focus(); }
+
+function validate(){
+  if(!validaNome(nome.value)){ setErr(nome,'Digite seu nome completo (nome e sobrenome).'); return false; }
+  if(!validaDocumento(doc.value)){ setErr(doc,'Informe um CPF ou CNPJ válido.'); return false; }
+  if(!validaTelefone(tel.value)){ setErr(tel,'Informe um telefone válido com DDD.'); return false; }
+  return true;
+}
+
+function loading(on){
+  btn.disabled = on;
+  spinner.style.display = on ? 'block' : 'none';
+  btnLabel.textContent = on ? 'Enviando...' : 'Quero garantir minha vaga';
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  topbar.style.display = 'none';
+  if(!validate()) return;
+
+  if(!CONFIG.WEBHOOK_URL || CONFIG.WEBHOOK_URL.indexOf('EDITE-AQUI') !== -1){
+    topbar.style.display = 'block';
+    topbar.textContent = 'Configuração pendente: defina CONFIG.WEBHOOK_URL no inscricao.html.';
+    return;
+  }
+
+  const payload = {
+    nome: nome.value.trim(),
+    documento: doc.value.trim(),
+    telefone: tel.value.trim(),
+    origem: CONFIG.ORIGEM,
+    enviado_em: new Date().toISOString()
+  };
+
+  loading(true);
+  try {
+    const resp = await fetch(CONFIG.WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    // Sucesso se HTTP ok. (Se o n8n responder JSON {ok:false}, tratamos como erro.)
+    let ok = resp.ok;
+    try { const j = await resp.clone().json(); if (j && j.ok === false) ok = false; } catch(_){}
+    if(!ok) throw new Error('Resposta não ok');
+    showSuccess();
+  } catch (err) {
+    loading(false);
+    topbar.style.display = 'block';
+    topbar.textContent = 'Não foi possível enviar agora. Verifique a conexão e tente novamente.';
+  }
+});
+
+function showSuccess(){
+  form.style.display = 'none';
+  document.getElementById('success').style.display = 'block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 220" fill="none">
+  <defs>
+    <linearGradient id="ondasGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7B3FE4"/>
+      <stop offset="55%" stop-color="#5B6BE8"/>
+      <stop offset="100%" stop-color="#2BB3F0"/>
+    </linearGradient>
+  </defs>
+  <!-- Wave / O symbol -->
+  <g transform="translate(20,30)">
+    <!-- main wave shape -->
+    <path d="M50 80
+             C 50 35, 95 25, 130 45
+             C 155 60, 160 90, 145 115
+             C 130 140, 95 145, 70 130
+             C 50 118, 45 100, 55 85
+             C 65 70, 90 65, 105 78
+             C 115 87, 115 100, 105 108"
+          stroke="url(#ondasGrad)" stroke-width="14" stroke-linecap="round" fill="none"/>
+    <!-- circuit dots left -->
+    <circle cx="6"  cy="78"  r="5" fill="#5B6BE8"/>
+    <circle cx="22" cy="78"  r="4" fill="#5B6BE8"/>
+    <line x1="11" y1="78" x2="40" y2="78" stroke="#5B6BE8" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="6"  cy="100" r="4" fill="#7B3FE4"/>
+    <line x1="11" y1="100" x2="42" y2="100" stroke="#7B3FE4" stroke-width="3" stroke-linecap="round"/>
+    <!-- circuit dots right -->
+    <circle cx="160" cy="60" r="4" fill="#2BB3F0"/>
+    <circle cx="160" cy="120" r="4" fill="#2BB3F0"/>
+  </g>
+  <!-- text -->
+  <g transform="translate(210,80)">
+    <text x="0" y="0" font-family="'Inter', sans-serif" font-size="38" font-weight="800" letter-spacing="6" fill="#7B3FE4">ONDAS DA</text>
+    <text x="0" y="50" font-family="'Inter', sans-serif" font-size="38" font-weight="800" letter-spacing="6" fill="#7B3FE4">INOVAÇÃO</text>
+  </g>
+</svg>
